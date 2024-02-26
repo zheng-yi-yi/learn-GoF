@@ -89,8 +89,8 @@
 - **工厂方法**：Factory Method
 - **抽象工厂**：Abstract Factory
 - **单例**：Singleton
-- **原型**：Prototype
 - **建造者**：Builder
+- **原型**：Prototype
 
 具体记录如下：
 
