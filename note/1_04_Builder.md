@@ -80,7 +80,7 @@ class Director {//指挥者(控制构建产品的顺序和步骤)
 客户端代码如下，创建具体建造者对象和指挥者对象，并通过指挥者对象来构建产品：
 
 ```java
-public class MyDo {
+public class Client {
     public static void main(String[] args) {
         Builder builder = new ConcreteBuilder();	// 创建具体建造者
         Director director = new Director(builder);	// 创建指挥者
