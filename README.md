@@ -15,6 +15,7 @@
   - [应用优势](#应用优势)
 - [创建型模式（Creational Pattern）](#创建型模式creational-pattern)
   - [工厂方法（Factory Method）](#工厂方法factory-method)
+  - [抽象工厂（Abstract Factory）](#抽象工厂abstract-factory)
 
 
 # 什么是设计模式？
@@ -120,5 +121,36 @@ public class Client {
 
 - 详细内容：[学习笔记 | 工厂方法模式](./note/1_01_Factory_Method.md)
 
-## 抽象工厂（）
+## 抽象工厂（Abstract Factory）
 
+> 提供一个创建一系列相关或相互依赖对象的接口，而无需指定它们具体的类。
+
+```java
+public class Client {   //客户端
+    public static void main(String args[]) {
+        // 创建海尔工厂
+        AbstractFactory haierFactory = new ConcreteFactory1();
+        // 使用海尔工厂创建产品
+        AbstractProductA haierTV = haierFactory.createProductA();
+        AbstractProductB haierAirConditioner = haierFactory.createProductB();
+        // 使用海尔产品
+        haierTV.methodA();
+        haierAirConditioner.methodB();
+
+        // 创建TCL工厂
+        AbstractFactory tclFactory = new ConcreteFactory2();
+        // 使用TCL工厂创建产品
+        AbstractProductA tclTV = tclFactory.createProductA();
+        AbstractProductB tclAirConditioner = tclFactory.createProductB();
+        // 使用TCL产品
+        tclTV.methodA();
+        tclAirConditioner.methodB();
+    }
+}
+```
+
+抽象工厂模式试图解决的问题是，当一个系统必须独立于它的产品的创建、组合和表示时，或者当一个系统需要配置多个系列中的一个时，或者强调一系列相关的产品对象的设计以便进行联合使用时。
+
+简单来说，**抽象⼯⼚模式可以确保⼀系列相关的产品被⼀起创建，这些产品能够相互配合使⽤**。
+
+详细内容：[学习笔记 | 抽象工厂模式](./note/1_02_Abstract_Factory_Pattern.md)
