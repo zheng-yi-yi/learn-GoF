@@ -154,3 +154,24 @@ public class Client {   //客户端
 简单来说，**抽象⼯⼚模式可以确保⼀系列相关的产品被⼀起创建，这些产品能够相互配合使⽤**。
 
 详细内容：[学习笔记 | 抽象工厂模式](./note/1_02_Abstract_Factory_Pattern.md)
+
+## 单例模式（Singleton）
+
+> 确保一个类只有一个实例，并提供一个全局访问点来访问这个唯一实例。
+
+```java
+// 懒汉式
+public class Singleton {
+	private static final Singleton instance = new Singleton();
+	private Singleton() {
+		// 私有构造⽅法，防⽌外部实例化
+	}
+	public static Singleton getInstance() {
+		return instance;
+	}
+}
+```
+
+单例模式主要解决的是资源共享和控制访问的问题。在某些场景下，我们需要确保某个类只有一个实例，以便所有的其他对象都能访问这个实例，而不是各自拥有一个实例。这样可以保证数据在多个实例间的同步，并且可以节省系统资源。
+
+详细内容：[学习笔记 | 单例模式](./note/1_03_Singleton_Pattern.md)
