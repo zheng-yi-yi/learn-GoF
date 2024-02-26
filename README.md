@@ -160,18 +160,56 @@ public class Client {   //客户端
 > 确保一个类只有一个实例，并提供一个全局访问点来访问这个唯一实例。
 
 ```java
-// 懒汉式
-public class Singleton {
-	private static final Singleton instance = new Singleton();
-	private Singleton() {
+// 饿汉式
+class Singleton1 {
+	private static final Singleton1 instance1 = new Singleton1();
+	private Singleton1() {
 		// 私有构造⽅法，防⽌外部实例化
 	}
-	public static Singleton getInstance() {
-		return instance;
+	public static Singleton1 getInstance() {
+		return instance1;
 	}
+}
+
+// 懒汉式
+class Singleton2 {
+    private static volatile Singleton2 instance2;
+    private Singleton2() {
+        // 私有构造⽅法，防⽌外部实例化
+    }
+    public static Singleton2 getInstance() {
+        if (instance2 == null) {
+            synchronized (Singleton2.class) {
+                if (instance2 == null) {
+                    instance2 = new Singleton2();
+                }
+            }
+        }
+        return instance2;
+    }
 }
 ```
 
 单例模式主要解决的是资源共享和控制访问的问题。在某些场景下，我们需要确保某个类只有一个实例，以便所有的其他对象都能访问这个实例，而不是各自拥有一个实例。这样可以保证数据在多个实例间的同步，并且可以节省系统资源。
 
 详细内容：[学习笔记 | 单例模式](./note/1_03_Singleton_Pattern.md)
+
+## 建造者模式（Builder）
+
+> 将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。
+
+```java
+public class Client {	// 客户端
+    public static void main(String[] args) {
+        Builder builder = new ConcreteBuilder();	// 创建具体建造者
+        Director director = new Director(builder);	// 创建指挥者
+        director.construct();	// 指导者构建产品
+        Product product = builder.getProduct();	//  获取构建好的产品
+        System.out.println(product);	// 输出产品信息
+    }
+}
+```
+
+建造者模式分离了对象子组件的单独建造（由`Builder`负责）和装配（由`Director`负责），从而可以建造出复杂的对象，实现了建造和装配的解耦。
+
+详细内容：[学习笔记 | 单例模式](./note/1_04_Builder.md)
