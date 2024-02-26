@@ -16,6 +16,8 @@
 - [创建型模式（Creational Pattern）](#创建型模式creational-pattern)
   - [工厂方法（Factory Method）](#工厂方法factory-method)
   - [抽象工厂（Abstract Factory）](#抽象工厂abstract-factory)
+  - [单例模式（Singleton）](#单例模式singleton)
+  - [建造者模式（Builder）](#建造者模式builder)
 
 
 # 什么是设计模式？
