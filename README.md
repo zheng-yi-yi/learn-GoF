@@ -18,6 +18,7 @@
   - [抽象工厂（Abstract Factory）](#抽象工厂abstract-factory)
   - [单例模式（Singleton）](#单例模式singleton)
   - [建造者模式（Builder）](#建造者模式builder)
+  - [原型模式（Prototype）](#原型模式prototype)
 
 
 # 什么是设计模式？
@@ -215,3 +216,30 @@ public class Client {	// 客户端
 建造者模式分离了对象子组件的单独建造（由`Builder`负责）和装配（由`Director`负责），从而可以建造出复杂的对象，实现了建造和装配的解耦。
 
 详细内容：[学习笔记 | 单例模式](./note/1_04_Builder.md)
+
+## 原型模式（Prototype）
+
+> 采用原型实例指定创建对象的种类，并且通过拷贝这些原型创建新的对象。原型模式允许一个对象再创建另外一个可定制的对象，无需知道任何创建的细节。
+
+```java
+public class Client {
+    static Prototype prototypeA, copyA;  //Client关联prototype
+    static Prototype prototypeB, copyB;
+
+    public static void main(String[] args) {
+        prototypeA = new ConcretePrototypeA("原型对象A");
+        copyA = prototypeA.clone();  //克隆原型对象
+        System.out.println("原型对象：" + prototypeA.getAttribute());
+        System.out.println("克隆对象：" + copyA.getAttribute());
+
+        prototypeB = new ConcretePrototypeB("原型对象B");
+        copyB = prototypeB.clone();
+        System.out.println("原型对象：" + prototypeB.getAttribute());
+        System.out.println("克隆对象：" + copyB.getAttribute());
+    }
+}
+```
+
+一句话：原型模式通过**复制一个已有实例**简化对象的创建过程。
+
+详细内容：[学习笔记 | 原型模式](./note/1_05_Prototype.md)
