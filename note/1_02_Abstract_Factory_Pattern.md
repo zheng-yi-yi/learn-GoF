@@ -1,5 +1,17 @@
 # 抽象工厂模式
 
+> 在`Java`中，抽象工厂模式的经典应用例子包括：
+>
+> 1. **Java数据库连接**：`Java`的数据库连接技术`JDBC`使用了抽象工厂模式。在`JDBC`中，`Connection`是一个抽象工厂，它的方法生成`PreparedStatement`、`CallableStatement`等产品。
+>
+> 2. **Java图形界面组件工厂**：`Java`的图形界面库`Swing`使用了抽象工厂模式。在`Swing`中，有一个名为`UIManager`的类，它是一个抽象工厂，可以生成`Button`、`Panel`、`TextField`等`GUI`组件。
+>
+> 3. **Java XML解析器工厂**：`Java`的`XML`解析器`JAXP`使用了抽象工厂模式。在`JAXP`中，有一个名为`DocumentBuilderFactory`的类，它是一个抽象工厂，可以生成`DocumentBuilder`，`DocumentBuilder`再生成`Document`。
+>
+> 4. **Spring框架的BeanFactory**：在`Spring`框架中，`BeanFactory`是一个抽象工厂，它的方法生成各种`Bean`。
+>
+> 这些都是抽象工厂模式在`Java`中的经典应用例子，它们都利用了抽象工厂模式的特性，通过定义一个创建一系列相关或相互依赖对象的接口，而无需指定它们具体的类。
+
 ## 定义和目的
 
 在工厂方法模式中，每个具体工厂只负责创建**单一的**具体产品。有时，我们需要一个工厂可以提供多个产品对象，而不是单一的产品对象。但如果有多类产品呢？
