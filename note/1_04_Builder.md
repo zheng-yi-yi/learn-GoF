@@ -1,5 +1,14 @@
 # 建造者模式
 
+> 在`Java`中，建造者模式的经典应用例子包括：
+>
+> 1. **`StringBuilder`类**：`Java`的`StringBuilder`类使用了建造者模式。它允许我们通过链式调用的方式添加字符或字符串，然后最后通过`toString`方法获取最终构建的字符串。
+> 2. **`Apache Commons Chain`**：这个库提供了一种基于建造者模式的方法来创建责任链。
+> 3. **`Spring Boot`的`RestTemplateBuilder`**：`Spring Boot`提供了`RestTemplateBuilder`类，它使用了建造者模式来创建`RestTemplate`对象。
+> 5. **`Java 8`的`Stream API`**：`Java 8`的`Stream API`使用了建造者模式。我们可以通过链式调用的方式添加各种操作，然后最后通过`collect`方法获取最终的结果。
+>
+> 这些都是建造者模式在`Java`中的经典应用例子，它们都利用了建造者模式的特性，通过分步骤构建复杂对象，使得代码更加清晰，易于理解。
+
 ## 定义和目的
 
 > 建造者模式（Builder Pattern）：将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。
