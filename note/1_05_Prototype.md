@@ -1,5 +1,16 @@
 # 原型模式
 
+> 在`Java`中，原型模式的经典应用例子包括：
+>
+> 1. **Java对象的克隆**：`Java`的`Object`类提供了一个`clone`方法，可以用于创建对象的副本。`Java`中的任何类只要实现了`Cloneable`接口并重写`Object`类的`clone`方法，就可以实现原型模式。
+>
+> 2. **Java的集合类**：`Java`的集合类，如`ArrayList`和`HashSet`，提供了`clone`方法，可以创建集合的副本。这是原型模式的应用。
+>
+> 3. **Android中的Intent对象**：在`Android`开发中，`Intent`对象用于在不同的组件之间进行通信。`Intent`对象提供了一个`clone`方法，可以创建`Intent`对象的副本。
+>
+> 4. **Spring框架的原型Bean**：在`Spring`框架中，可以将`Bean`的`scope`设置为`prototype`，这样每次从`Spring`容器中获取`Bean`时，都会返回一个新的`Bean`实例。
+>
+
 ## 定义和目的
 
 为什么需要原型模式？
