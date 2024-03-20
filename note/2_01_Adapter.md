@@ -40,51 +40,102 @@
 
 ### 类适配器模式
 
-![image-20240229171052191](images/2_01_Adapter/image-20240229171052191.png)
+![image-20240320142124150](images/2_01_Adapter/image-20240320142124150.png)
+
+我们先来看类适配器模式：
 
 ```java
-public class Client { //客户端
-	public static void main(String[] args) {
-		//Client关联Target，客户端面向抽象编程
-		Target adapter = new Adapter();  //可以选择不同类型的适配器
-		adapter.request(); // 调用接口方法
-	}
-}
-
-class Adaptee {  //角色1：适配者类
+//角色1：适配者类 (已有的、需要被适配的类)
+class Adaptee {
     public void specificRequest() {
-        System.out.println("使用适配者功能...");
+        System.out.println("Specific request...");
     }
 }
 
-interface Target {  //角色2：目标接口
+//角色2：目标接口 (我们期望的接口)
+interface Target {
     void request();
 }
 
-class Adapter extends Adaptee implements Target { //角色3：适配器类：类继承+实现目标接口
+//角色3：适配器类 (继承了Adaptee并实现Target接口，解决接口不兼容的问题)
+class Adapter extends Adaptee implements Target {
 	@Override
-	public void request() { //实现接口方法
-		//调用基类方法
-		super.specificRequest(); //super表示父类对象
+	public void request() {
+		super.specificRequest(); //调用基类方法
+	}
+}
+```
+
+适配器类`Adapter`继承了 `Adaptee` 并实现了 `Target` 接口。在 `request` 方法中，它调用了 `Adaptee` 的 `specificRequest` 方法。这样，当客户端通过 `Target` 接口调用 `request` 方法时，实际上会执行 `Adaptee` 的 `specificRequest` 方法，从而实现了接口的适配。
+
+客户端代码如下：
+
+```java
+public class Client {
+	public static void main(String[] args) {
+		Target adapter = new Adapter();  // 可选择不同类型的适配器
+		adapter.request(); // 调用接口方法
 	}
 }
 ```
 
 ### 对象适配器模式
 
+![image-20240320145217836](images/2_01_Adapter/image-20240320145217836.png)
+
+我们再来看对象适配器模式：
+
+```java
+//角色1：适配者类 (已有的、需要被适配的类)
+class Adaptee {
+	public void specificRequest() {
+		System.out.println("Specific request...");
+	}
+}
+
+//角色2：目标接口 (我们期望的接口)
+interface Target {
+	void request();
+}
+
+//角色3：适配器类 (聚合Adaptee类，实现Target接口，解决接口不兼容的问题)
+class Adapter implements Target {
+    
+	private Adaptee adaptee; // 持有一个 Adaptee 的实例
+
+	public Adapter(Adaptee adaptee) {
+		this.adaptee = adaptee;
+	}
+
+	@Override
+	public void request() {
+		adaptee.specificRequest(); // 调用成员对象的方法，实现接口兼容
+	}
+}
+```
+
+客户端代码如下：
+
+```java
+public class Client {
+	public static void main(String[] args) {
+		Target adapter = new Adapter(new Adaptee());
+		adapter.request();
+	}
+}
+```
 
 
-## 代码示例
-
-通过具体的代码示例来理解和学习设计模式，帮助理解工作原理
 
 ## 对比其他设计模式
 
-理解这个设计模式与其他设计模式的区别和联系。
+1. **适配器模式 vs 装饰器模式**：装饰器模式用于在运行时动态地添加新功能到对象中，而适配器模式则是用于使两个不兼容的接口能够一起工作。
+
+2. **适配器模式 vs 桥接模式**：桥接模式主要用于将抽象部分与实现部分分离，使它们可以独立地变化。而适配器模式则是用于使两个已有接口能够一起工作。
+
+3. **适配器模式 vs 代理模式**：代理模式为其他对象提供一种代理以控制对这个对象的访问。而适配器模式则是用于使两个不兼容的接口能够一起工作。
+
+4. **适配器模式 vs 外观模式**：外观模式提供了一个统一的接口，用来访问子系统中的一群接口。外观模式定义了一个高层接口，使得子系统更易于使用。而适配器模式则是使两个不兼容的接口能够一起工作。
 
 ## 总结
-
-该模式试图解决的问题是？
-
-理解在什么情况下使用这个设计模式(使用场景)。
 
